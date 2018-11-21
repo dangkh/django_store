@@ -1,23 +1,82 @@
 {% extends "basic.html" %}
+{% load static %}
 {% block content %}
-    {% if citys %}
-        <ul>
-        {% for city in citys %}
-            <!-- <li><a href="{% url 'store:city_detail' city.id %}">{{ city.city_name }}</a></li> -->
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No city are available.</p>
-    {% endif %}
+<div class="w3-content" style="max-width:1100px">
 
-    {% if stores %}
-        <ul>
-        {% for store in stores %}
-            <!-- <li><a href="{% url 'store:restaurant_detail' restaurant.id %}">{{ store.store_name }}</a></li> -->
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No store are available.</p>
-    {% endif %}
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="{% static "mystore/logo1.jpg" %}"
+        class="w3-round w3-image w3-opacity-min" alt="Setting"
+        width="1000" height="750">
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center">About us</h1><br>
+      <h5 class="w3-center">Tradition since 1889</h5>
+      <p class="w3-large">TQua hơn 33 năm hoạt động sản xuất kinh doanh với bao thăng trầm và thách thức, giờ đây, Biti’s đã lớn mạnh và phát triển đi lên cùng đất nước, trở thành một thương hiệu uy tín, tin cậy và quen thuộc với người tiêu dùng và là niềm tự hào của người Việt Nam về một “Thương hiệu Quốc gia” trong lĩnh vực Giày dép uy tín và chất lượng.</p>
+    </div>
+  </div>
+
+  <hr>
+
+    <div class="w3-row w3-padding-64" id="city">
+        <div class="w3-col l6 w3-padding-large">
+            <h1 class="w3-center">City</h1>
+            <h2 class="w3-center">
+                {% if city %}
+                    {{ city.city_name }}
+                {% endif %}
+            </h2><br>
+
+            <p class="w3-large">“Đi cà phê” từ lâu không chỉ đơn thuần là uống một tách cà phê mà còn là dịp gặp mặt và trò chuyện cùng bạn bè. Tại The Coffee House, chúng tôi trân trọng và đề cao giá trị kết nối giữa con người và trải nghiệm của khách hàng. Chúng tôi được truyền cảm hứng từ những tách cà phê và thức uống mình tạo ra. Chúng tôi tin tưởng mạnh mẽ rằng những thức uống với chất lượng tốt nhất được phục vụ trong không gian thân thiện bởi những nhân viên tận tâm tại The Coffee House sẽ mang lại những niềm vui bạn có thể chia sẻ cùng bạn bè và gia đình.</p>
+        </div>
+
+        <div class="w3-col l6 w3-padding-large">
+          <img src="{% static "mystore/test1.jpg" %}"
+          class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%; margin-top: 100px;">
+        </div>
+    </div>
+    <div class="w3-row-reverse w3-padding-64 row-reverse" id="store">
+        <div class="w3-col l6 w3-padding-large">
+            <h1 class="w3-center">Store</h1>
+            <h2 class="w3-center">
+                {% if store %}
+                    {{ store.store_name }}
+                {% endif %}
+            </h2>
+            <h3 class="w3-center">
+
+                {% if store %}
+                    <p>Địa chỉ: {{ store.store_address }} </p>
+                {% endif %}
+            </h3><br>
+
+            <p class="w3-large">“Đi cà phê” từ lâu không chỉ đơn thuần là uống một tách cà phê mà còn là dịp gặp mặt và trò chuyện cùng bạn bè. Tại The Coffee House, chúng tôi trân trọng và đề cao giá trị kết nối giữa con người và trải nghiệm của khách hàng. Chúng tôi được truyền cảm hứng từ những tách cà phê và thức uống mình tạo ra. Chúng tôi tin tưởng mạnh mẽ rằng những thức uống với chất lượng tốt nhất được phục vụ trong không gian thân thiện bởi những nhân viên tận tâm tại The Coffee House sẽ mang lại những niềm vui bạn có thể chia sẻ cùng bạn bè và gia đình.</p>
+        </div>
+
+        <div class="w3-col l6 w3-padding-large">
+          <img src="{% static "mystore/store.jpg" %}"
+          class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%; margin-top: 100px;">
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="w3-container w3-padding-64" id="contact">
+        <h1>Contact</h1><br>
+        <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
+        <p class="w3-text-blue-grey w3-large"><b>E3building, 144 Xuan Thuy, Cau Giay, Hanoi</b></p>
+        <p>You can also contact us by phone 0969232246 or email dangkh109@gmail.com, or you can send us a message here:</p>
+        <form action="/action_page.php" target="_blank">
+          <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+          <p><input class="w3-input w3-padding-16" type="number" placeholder="How many people" required name="People"></p>
+          <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p>
+          <p><input class="w3-input w3-padding-16" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+          <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
+        </form>
+    </div>
+
+<!-- End page content -->
+</div>
 
 {% endblock %}

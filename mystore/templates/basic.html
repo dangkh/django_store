@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <style>
-  body {font-family: "Times New Roman", Georgia, Serif;}
-  h1,h2,h3,h4,h5,h6 {
-      font-family: "Playfair Display";
-      letter-spacing: 5px;
-  }
-  </style>
-  {% block title %}<title>Store</title>{% endblock %}
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<body>
-  <div class="w3-top">
-    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-      <a href="#home" class="w3-bar-item w3-button">My Store</a>
-      <!-- Right-sided navbar links. Hide them on small screens -->
-      <div class="w3-right w3-hide-small">
-        <a href="#about" class="w3-bar-item w3-button">About</a>
-        <a href="#menu" class="w3-bar-item w3-button">Menu</a>
-        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mystore/style.css' %}">
+    {% block title %}<title>Store</title>{% endblock %}
+  </head>
+
+  <body>
+    <div class="w3-top">
+      <div class="w3-bar w3-white w3-padding w3-card letter-spacing">
+        <a href="#home" class="w3-bar-item w3-button">My Store</a>
+        <!-- Right-sided navbar links. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+          <a href="#about" class="w3-bar-item w3-button">About</a>
+          <a href="#city" class="w3-bar-item w3-button">Citys</a>
+          <a href="#store" class="w3-bar-item w3-button">Stores</a>
+          <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  {% block content %}<!-- default content text (typically empty) -->{% endblock %}
-</body>
+    {% block content %}
+      <!-- default content text (typically empty) -->
+    {% endblock %}
+  </body>
+<footer class="w3-center w3-light-grey w3-padding-32">
+  <p>Powered by dangkh</a></p>
+</footer>
+
 </html>
