@@ -21,10 +21,6 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('mystore/', include('mystore.urls')),
+    path('', include('mystore.urls')),
     url(r'^admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='/mystore/', permanent=True)),
-]
-urlpatterns += [
-    path('accounts/', include('django.contrib.auth.urls')),
 ]
