@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from mystore.models import City, Store, Image
 from random import randint
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 def index(request):
     citys = City.objects.all()
@@ -31,3 +31,19 @@ def register(request):
 
       args = {'form': form}
       return render(request, 'mystore/register.html', args)
+
+
+def user_detail(request):
+    arg = {'user': request.user}
+    return render(request, 'mystore/user_detail.html', arg)
+
+def user_edit_detail(request):
+    if request.method == 'POST':
+      form = UserChangeForm(request.POST, instance = request.user)
+      if form.is_valid():
+        form.save()
+        return redirect('profile')
+    else:
+      form = UserChangeForm(instance = request.user)
+      args = {'form': form}
+      return render(request, 'mystore/edit_detail.html', args)
