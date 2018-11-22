@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from mystore.models import City, Store, Image
 from random import randint
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from mystore.form import RegistrationForm, EditUserDetailForm
 
 def index(request):
     citys = City.objects.all()
@@ -22,12 +23,12 @@ def index(request):
 
 def register(request):
     if request.method == 'POST':
-      form = UserCreationForm(request.POST)
+      form = RegistrationForm(request.POST)
       if form.is_valid():
         form.save()
         return redirect('/')
     else:
-      form = UserCreationForm()
+      form = RegistrationForm()
 
       args = {'form': form}
       return render(request, 'mystore/register.html', args)
@@ -39,11 +40,11 @@ def user_detail(request):
 
 def user_edit_detail(request):
     if request.method == 'POST':
-      form = UserChangeForm(request.POST, instance = request.user)
+      form = EditUserDetailForm(request.POST, instance = request.user)
       if form.is_valid():
         form.save()
         return redirect('profile')
     else:
-      form = UserChangeForm(instance = request.user)
+      form = EditUserDetailForm(instance = request.user)
       args = {'form': form}
       return render(request, 'mystore/edit_detail.html', args)
