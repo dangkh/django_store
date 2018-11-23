@@ -53,16 +53,13 @@ def user_edit_detail(request):
       return render(request, 'mystore/edit_detail.html', args)
 
 def change_password(request):
-    print("*****************************************")
-    print("*****************************************")
-    print(request.user)
     if request.user != 'AnonymousUser':
       if request.method == 'POST':
         form = PasswordChangeForm(data = request.POST, user = request.user)
         if form.is_valid():
           form.save()
           update_session_auth_hash(request, form.user)
-          return redirect('profile')
+          return redirect('store:profile')
         else:
           # messages.add_message(request, messages.INFO, 'type again')
           return redirect('change_password')
@@ -72,6 +69,6 @@ def change_password(request):
         return render(request, 'mystore/change_password.html', args)
     else:
       # messages.add_message(request, messages.INFO, 'Login first')
-      return redirect('login')
+      return redirect('store:login')
 
 
