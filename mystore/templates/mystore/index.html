@@ -22,10 +22,14 @@
 
     <div class="w3-row w3-padding-64" id="city">
         <div class="w3-col l6 w3-padding-large">
-            <h1 class="w3-center">City</h1>
+            <h1 class="w3-center">
+              <a href="{% url 'citys' %}" class="w3-bar-item w3-button">
+                Citys
+              </a>
+            </h1>
             <h2 class="w3-center">
                 {% if city %}
-                    {{ city.city_name }}
+                    <a href="{% url 'city_detail' city.id %}">{{ city.city_name }}</a>
                 {% endif %}
             </h2><br>
 

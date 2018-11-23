@@ -1,0 +1,14 @@
+{% extends "basic.html" %}
+{% load static %}
+{% block content %}
+  <ul>
+    {% for city in city_list %}
+        <li>{{ city.city_name }}</li>
+        <li>{{ city.city_name }}</li>
+        <li>{{ city.city_name }}</li>
+        <li>{{ city.city_name }}</li>
+        <li>{{ city.city_name }}</li>
+        <a href="{% url 'city_detail' city.id %}">{{ city.city_name }}</a>
+    {% endfor %}
+  </ul>
+{% endblock %}

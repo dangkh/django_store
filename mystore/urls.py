@@ -6,6 +6,11 @@ from django.contrib.auth import login, logout
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('citys/', views.CityListView.as_view(), name='citys'),
+    path('city/<int:pk>', views.CityDetailView.as_view(), name='city_detail'),
+    path('city/create/', views.CityCreate.as_view(), name='city_create'),
+    path('city/<int:pk>/update/', views.CityUpdate.as_view(), name='city_update'),
+    path('city/<int:pk>/delete/', views.CityDelete.as_view(), name='city_delete'),
 ]
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),

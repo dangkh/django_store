@@ -6,7 +6,9 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from mystore.form import RegistrationForm, EditUserDetailForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
-
+from django.views import generic
+from django.urls import reverse, reverse_lazy
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def index(request):
     citys = City.objects.all()
@@ -71,4 +73,23 @@ def change_password(request):
       # messages.add_message(request, messages.INFO, 'Login first')
       return redirect('store:login')
 
+class CityListView(generic.ListView):
+    model = City
+    template_name ='mystore/listcitys.html'
 
+class CityDetailView(generic.DetailView):
+    model = City
+    template_name ='mystore/detailcity.html'
+
+class CityCreate(CreateView):
+    model = City
+    fields = '__all__'
+    success_url = reverse_lazy('citys')
+
+class CityUpdate(UpdateView):
+    model = City
+    fields = '__all__'
+
+class CityDelete(DeleteView):
+    model = City
+    success_url = reverse_lazy('citys')
