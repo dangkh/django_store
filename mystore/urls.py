@@ -12,4 +12,5 @@ urlpatterns += [
     path('accounts/register', views.register, name='register'),
     path('accounts/userdetail', views.user_detail, name='profile'),
     path('accounts/userdetail/edit', views.user_edit_detail, name='editprofile'),
+    path('accounts/userdetail/change_password', views.change_password, name='change_password'),
 ]

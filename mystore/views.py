@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from mystore.models import City, Store, Image
 from random import randint
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from mystore.form import RegistrationForm, EditUserDetailForm
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+
 
 def index(request):
     citys = City.objects.all()
@@ -48,3 +51,27 @@ def user_edit_detail(request):
       form = EditUserDetailForm(instance = request.user)
       args = {'form': form}
       return render(request, 'mystore/edit_detail.html', args)
+
+def change_password(request):
+    print("*****************************************")
+    print("*****************************************")
+    print(request.user)
+    if request.user != 'AnonymousUser':
+      if request.method == 'POST':
+        form = PasswordChangeForm(data = request.POST, user = request.user)
+        if form.is_valid():
+          form.save()
+          update_session_auth_hash(request, form.user)
+          return redirect('profile')
+        else:
+          # messages.add_message(request, messages.INFO, 'type again')
+          return redirect('change_password')
+      else:
+        form = PasswordChangeForm(user = request.user)
+        args = {'form': form}
+        return render(request, 'mystore/change_password.html', args)
+    else:
+      # messages.add_message(request, messages.INFO, 'Login first')
+      return redirect('login')
+
+
