@@ -1,0 +1,15 @@
+{% extends "basic.html" %}
+{% load static %}
+{% block content %}
+  <ul>
+    {% for store in store_list %}
+        <li>{{ store.store_name }}</li>
+        <li>{{ store.store_name }}</li>
+        <li>{{ store.store_name }}</li>
+        <li>{{ store.store_name }}</li>
+        <li>{{ store.store_name }}</li>
+        <li>{{ store.store_name }}</li>
+        <a href="{% url 'store_detail' store.id %}">{{ store.store_name }}</a>
+    {% endfor %}
+  </ul>
+{% endblock %}

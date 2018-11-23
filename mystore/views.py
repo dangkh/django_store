@@ -89,7 +89,30 @@ class CityCreate(CreateView):
 class CityUpdate(UpdateView):
     model = City
     fields = '__all__'
+    success_url = reverse_lazy('citys')
 
 class CityDelete(DeleteView):
     model = City
     success_url = reverse_lazy('citys')
+
+class StoreListView(generic.ListView):
+    model = Store
+    template_name ='mystore/liststores.html'
+
+class StoreDetailView(generic.DetailView):
+    model = Store
+    template_name ='mystore/detail_store.html'
+
+class StoreCreate(CreateView):
+    model = Store
+    fields = '__all__'
+    success_url = reverse_lazy('stores')
+
+class StoreUpdate(UpdateView):
+    model = Store
+    fields = '__all__'
+    success_url = reverse_lazy('stores')
+
+class StoreDelete(DeleteView):
+    model = Store
+    success_url = reverse_lazy('stores')

@@ -11,6 +11,11 @@ urlpatterns = [
     path('city/create/', views.CityCreate.as_view(), name='city_create'),
     path('city/<int:pk>/update/', views.CityUpdate.as_view(), name='city_update'),
     path('city/<int:pk>/delete/', views.CityDelete.as_view(), name='city_delete'),
+    path('stores/', views.StoreListView.as_view(), name='stores'),
+    path('stores/<int:pk>', views.StoreDetailView.as_view(), name='store_detail'),
+    path('stores/create/', views.StoreCreate.as_view(), name='store_create'),
+    path('stores/<int:pk>/update/', views.StoreUpdate.as_view(), name='store_update'),
+    path('stores/<int:pk>/delete/', views.StoreDelete.as_view(), name='store_delete'),
 ]
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),

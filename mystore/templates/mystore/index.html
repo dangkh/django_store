@@ -43,16 +43,20 @@
     </div>
     <div class="w3-row-reverse w3-padding-64 row-reverse" id="store">
         <div class="w3-col l6 w3-padding-large">
-            <h1 class="w3-center">Store</h1>
+            <h1 class="w3-center">
+              <a href="{% url 'stores' %}" class="w3-bar-item w3-button">
+                Store
+              </a>
+            </h1>
             <h2 class="w3-center">
                 {% if store %}
-                    {{ store.store_name }}
+                    <a href="{% url 'store_detail' store.id %}">{{ store.store }}</a>
                 {% endif %}
             </h2>
             <h3 class="w3-center">
 
                 {% if store %}
-                    <p>Địa chỉ: {{ store.store_address }} </p>
+                    <p><a href="{% url 'city_detail' city.id %}">Địa chỉ: {{ store.store_address }}</a></p>
                 {% endif %}
             </h3><br>
 
